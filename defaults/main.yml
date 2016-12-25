@@ -1,0 +1,8 @@
+java_user: java
+java_group: java
+java_log_dir: /var/log/java
+java_db_dir: "{{ __java_db_dir }}"
+java_service: java
+java_conf_dir: "{{ __java_conf_dir }}"
+java_conf_file: "{{ __java_conf_dir }}/java.conf"
+java_flags: ""

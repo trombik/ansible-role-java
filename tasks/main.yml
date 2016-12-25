@@ -1,0 +1,37 @@
+---
+# tasks file for ansible-role-java
+
+- include_vars: "{{ ansible_os_family }}.yml"
+
+- include: "install-{{ ansible_os_family }}.yml"
+
+- name: Create log directory
+  file:
+    path: "{{ java_log_dir }}"
+    mode: 0755
+    owner: "{{ java_user }}"
+    group: "{{ java_group }}"
+    state: directory
+  notify: Restart java
+
+- name: Create db directory
+  file:
+    path: "{{ java_db_dir }}"
+    mode: 0755
+    owner: "{{ java_user }}"
+    group: "{{ java_group }}"
+    state: directory
+  notify: Restart java
+
+- name: Create java.conf
+  template:
+    src: java.conf.j2
+    dest: "{{ java_conf_file }}"
+    validate: echo %s
+  notify: Restart java
+
+- name: Start java
+  service:
+    name: "{{ java_service }}"
+    enabled: true
+    state: started
