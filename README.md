@@ -1,6 +1,12 @@
 # ansible-role-java
 
-Installs and configures Java
+Installs and configures Java (JDK or JRE).
+
+## Notes for Ubuntu
+
+The role supports 14.04 for the moment. At this time of writing, JDK 1.8 is not
+in the official apt repository. The role adds a ppa repository and installs
+`oracle-java8-installer`, i.e. no JDK support.
 
 # Requirements
 
@@ -10,7 +16,7 @@ None
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `java_packages` | | `{{ __java_packages }}` |
+| `java_packages` | list of Java package name to install | `{{ __java_packages }}` |
 
 
 ## FreeBSD
@@ -36,9 +42,9 @@ None
   roles:
     - ansible-role-java
   vars:
-    java_packages:
-      - java/openjdk7
-      - java/openjdk8-jre
+    java_packages: "{% if ansible_os_family == 'FreeBSD' %}[ 'java/openjdk7', 'java/openjdk8-jre' ]{% elif ansible_os_family == 'RedHat' %}[ 'java-1.7.0-openjdk' ]{% elif ansible_os_family == 'OpenBSD' %}[ 'jdk-1.7.0.80p1v0' ]{% elif ansible_os_family == 'Debian' %}[ 'oracle-java8-installer' ]{% endif %}"
+    apt_repo_to_add:
+      - ppa:webupd8team/java
 ```
 
 # License

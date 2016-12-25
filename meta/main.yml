@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   author: Tomoyuki Sakurai
-  description: Configures something
+  description: Installs and configures Java (JDK or JRE)
   company: Reallyenglish
   license: BSD
   min_ansible_version: 2.0
@@ -12,14 +12,14 @@ galaxy_info:
   - name: OpenBSD
     versions:
     - 6.0
-#  - name: Ubuntu
-#    versions:
-#    - trusty
+  - name: Ubuntu
+    versions:
+    - trusty
   - name: EL
     versions:
     - 7
 
   galaxy_tags:
     - java
-#dependencies:
-#  - { role: username.common, some_parameter: 3 }
+dependencies:
+  - { role: reallyenglish.apt-repo, when: ansible_os_family == 'Debian' }
