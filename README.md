@@ -1,6 +1,6 @@
 # ansible-role-java
 
-A brief description of the role goes here.
+Installs and configures Java
 
 # Requirements
 
@@ -8,8 +8,16 @@ None
 
 # Role Variables
 
-| variable | description | default |
+| Variable | Description | Default |
 |----------|-------------|---------|
+| `java_packages` | | `{{ __java_packages }}` |
+
+
+## FreeBSD
+
+| Variable | Default |
+|----------|---------|
+| `__java_packages` | `["java/openjdk8"]` |
 
 
 # Dependencies
@@ -19,6 +27,13 @@ None
 # Example Playbook
 
 ```yaml
+- hosts: localhost
+  roles:
+    - ansible-role-java
+  vars:
+    java_packages:
+      - java/openjdk7
+      - java/openjdk8-jre
 ```
 
 # License

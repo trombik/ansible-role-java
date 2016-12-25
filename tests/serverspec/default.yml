@@ -2,4 +2,6 @@
   roles:
     - ansible-role-java
   vars:
-    java_config: ""
+    java_packages:
+      - java/openjdk7
+      - java/openjdk8-jre

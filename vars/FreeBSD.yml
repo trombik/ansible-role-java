@@ -1,2 +1,2 @@
-__java_db_dir: /var/db/java
-__java_conf_dir: /usr/local/etc/java
+__java_packages:
+  - java/openjdk8
