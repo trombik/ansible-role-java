@@ -2,11 +2,11 @@
 
 Installs and configures Java (JDK or JRE).
 
-## Notes for Ubuntu
+## Notes for Ubuntu 14.04
 
-The role supports 14.04 for the moment. At this time of writing, JDK 1.8 is not
-in the official apt repository. The role adds a ppa repository and installs
-`oracle-java8-installer`, i.e. no JRE support.
+At this time of writing, JDK 1.8 is not in the official apt repository. The
+role adds a ppa repository and installs `oracle-java8-installer`, i.e. no JRE
+support.
 
 # Requirements
 
@@ -18,18 +18,35 @@ None
 |----------|-------------|---------|
 | `java_packages` | list of Java package name to install | `{{ __java_packages }}` |
 
-
 ## FreeBSD
 
 | Variable | Default |
 |----------|---------|
 | `__java_packages` | `["java/openjdk8"]` |
 
+## OpenBSD
+
+| Variable | Default |
+|----------|---------|
+| `__java_packages` | `["jdk-1.8.0.72p0v0"]` |
+
 ## RedHat
 
 | Variable | Default |
 |----------|---------|
 | `__java_packages` | `["java-1.8.0-openjdk"]` |
+
+## Ubuntu-14.04
+
+| Variable | Default |
+|----------|---------|
+| `__java_packages` | `["oracle-java8-installer"]` |
+
+## Ubuntu-16.04
+
+| Variable | Default |
+|----------|---------|
+| `__java_packages` | `["openjdk-8-jdk"]` |
 
 # Dependencies
 
@@ -42,7 +59,7 @@ None
   roles:
     - ansible-role-java
   vars:
-    java_packages: "{% if ansible_os_family == 'FreeBSD' %}[ 'java/openjdk7', 'java/openjdk8-jre' ]{% elif ansible_os_family == 'RedHat' %}[ 'java-1.7.0-openjdk' ]{% elif ansible_os_family == 'OpenBSD' %}[ 'jdk-1.7.0.80p1v0' ]{% elif ansible_os_family == 'Debian' %}[ 'oracle-java8-installer' ]{% endif %}"
+    java_packages: "{% if ansible_os_family == 'FreeBSD' %}[ 'java/openjdk7', 'java/openjdk8-jre' ]{% elif ansible_os_family == 'RedHat' %}[ 'java-1.7.0-openjdk' ]{% elif ansible_os_family == 'OpenBSD' %}[ 'jdk-1.7.0.80p1v0' ]{% elif ansible_os_family == 'Debian' %}[ 'oracle-java8-installer', 'openjdk-7-jdk' ]{% endif %}"
     apt_repo_to_add:
       - ppa:webupd8team/java
 ```
