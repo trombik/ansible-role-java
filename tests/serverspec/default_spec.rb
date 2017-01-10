@@ -54,3 +54,18 @@ when "ubuntu"
     end
   end
 end
+
+case os[:family]
+when "openbsd"
+  describe command("/usr/local/jdk-1.7.0/bin/jps") do
+    its(:stdout) { should match(/^\d+\s+Jps/) }
+    its(:stderr) { should match(/^$/) }
+    its(:exit_status) { should eq 0 }
+  end
+else
+  describe command("jps") do
+    its(:stdout) { should match(/^\d+\s+Jps/) }
+    its(:stderr) { should match(/^$/) }
+    its(:exit_status) { should eq 0 }
+  end
+end
