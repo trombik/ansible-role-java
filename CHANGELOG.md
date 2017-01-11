@@ -1,3 +1,7 @@
+## Release 1.2.0
+
+* 114620e install jps by installing `-devel` package (#17)
+
 ## Release 1.1.1
 
 * 04ac0ab remove the workaround (#14)
