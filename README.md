@@ -43,7 +43,7 @@ the role supports.
 
 | Variable | Default |
 |----------|---------|
-| `__java_packages` | `["jdk-1.8.0.72p0v0"]` |
+| `__java_packages` | `["jdk--%1.8"]` |
 
 ## RedHat
 
