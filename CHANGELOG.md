@@ -1,3 +1,7 @@
+## Release 1.2.2
+
+* 98ce62d [bugfix] update rubocop to the latest (#1)
+
 ## Release 1.2.1
 
 * c1d656f [bugfix] remove fixed version from `var/OpenBSD.yml` (#25)
