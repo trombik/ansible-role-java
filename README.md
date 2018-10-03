@@ -63,6 +63,12 @@ the role supports.
 |----------|---------|
 | `__java_packages` | `["openjdk-8-jdk"]` |
 
+## Ubuntu-18
+
+| Variable | Default |
+|----------|---------|
+| `__java_packages` | `["openjdk-8-jdk"]` |
+
 # Dependencies
 
 None
