@@ -1,3 +1,9 @@
+## Release 1.3.0
+
+* 8bfd4ed bugfix: update author information
+* aa368ed bugfix: QA
+* bc8ddea feature: support Ubuntu 1804 and OpenBSD 6.3
+
 ## Release 1.2.2
 
 * 98ce62d [bugfix] update rubocop to the latest (#1)
