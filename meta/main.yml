@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: java
   author: Tomoyuki Sakurai
   description: Installs and configures Java (JDK or JRE)
   company: Reallyenglish
