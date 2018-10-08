@@ -1,3 +1,10 @@
+## Release 1.4.0
+
+* ae6feb1 bugfix: incorrect box name for OpenBSD
+* d1f9455 bugfix: remove deprecation warnings
+* ecae6bf feature: support FreeBSD 11.2, drop EoLed 11.1 from tests
+* bd736bf bugfix: QA
+
 ## Release 1.3.0
 
 * 8bfd4ed bugfix: update author information
