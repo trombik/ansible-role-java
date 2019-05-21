@@ -19,9 +19,6 @@ galaxy_info:
       versions:
         - xenial
         - bionic
-    - name: Debian
-      versions:
-        - jessie
     - name: EL
       versions:
         - 7
