@@ -78,7 +78,7 @@ None
 ```yaml
 - hosts: localhost
   roles:
-    - role: trombik.apt-repo
+    - role: trombik.apt_repo
       when: ansible_os_family == 'Debian'
     - role: ansible-role-java
   vars:
