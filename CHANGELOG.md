@@ -1,3 +1,19 @@
+## Release 2.0.0
+
+* 55d8380 bugfix: update README
+* 0088c78 bugfix: update java versions for OpenBSD
+* b164af5 bugfix: ignore yaml files under .kitchen
+* 8aa2b1d bugfix: s/python/python3/
+* 696a631 backword incompatible: drop Debian support
+* ffd0800 bugfix: remove loops from package installation tasks
+* 54948c4 bugfix: update supported platform versions
+* 3a55faa bugfix: QA
+
+### Backward incompatibility
+
+This release drops Debian support due to lack of resource to maintain Debian
+virtual machine image.
+
 ## Release 1.4.0
 
 * ae6feb1 bugfix: incorrect box name for OpenBSD
