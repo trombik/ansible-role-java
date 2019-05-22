@@ -9,7 +9,12 @@ when "freebsd"
 when "redhat"
   packages = ["java-1.7.0-openjdk"]
 when "openbsd"
-  packages = ["jdk-1.8.0.144v0"]
+  packages = case os[:release]
+             when "6.4"
+               ["jdk-1.8.0.172p0v0"]
+             when "6.5"
+               ["jdk-1.8.0.202v0"]
+             end
 when "ubuntu"
   packages = if os[:release].to_f < 16.04
                ["oracle-java8-installer", "openjdk-7-jdk"]
