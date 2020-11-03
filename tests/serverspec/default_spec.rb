@@ -5,23 +5,12 @@ packages = []
 
 case os[:family]
 when "freebsd"
-  packages = ["java/openjdk7", "java/openjdk8-jre"]
+  packages = ["java/openjdk13"]
 when "redhat"
-  packages = ["java-1.7.0-openjdk"]
+  packages = ["java-1.8.0-openjdk", "java-1.8.0-openjdk-devel"]
 when "openbsd"
-  packages = case os[:release]
-             when "6.4"
-               ["jdk-1.8.0.172p0v0"]
-             when "6.5"
-               ["jdk-1.8.0.202v0"]
-             end
+  packages = ["jdk"]
 when "ubuntu"
-  packages = if os[:release].to_f < 16.04
-               ["oracle-java8-installer", "openjdk-7-jdk"]
-             else
-               ["openjdk-8-jdk"]
-             end
-when "debian"
   packages = ["openjdk-8-jdk"]
 end
 
@@ -60,7 +49,7 @@ end
 
 case os[:family]
 when "openbsd"
-  describe command("/usr/local/jdk-1.8.0/bin/jps") do
+  describe command("/usr/local/jdk-11/bin/jps") do
     its(:stdout) { should match(/^\d+\s+Jps/) }
     its(:stderr) { should match(/^$/) }
     its(:exit_status) { should eq 0 }
