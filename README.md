@@ -21,17 +21,24 @@ the role supports.
 |----------|-------------|---------|
 | `java_packages` | list of Java package name to install | `{{ __java_packages }}` |
 
+## Debian-8
+
+| Variable | Default |
+|----------|---------|
+| `__java_packages` | `["openjdk-8-jdk"]` |
+
+
 ## FreeBSD
 
 | Variable | Default |
 |----------|---------|
-| `__java_packages` | `["java/openjdk8"]` |
+| `__java_packages` | `["java/openjdk13"]` |
 
 ## OpenBSD
 
 | Variable | Default |
 |----------|---------|
-| `__java_packages` | `["jdk--%1.8"]` |
+| `__java_packages` | `["jdk--%11"]` |
 
 ## RedHat
 
@@ -57,6 +64,12 @@ the role supports.
 |----------|---------|
 | `__java_packages` | `["openjdk-8-jdk"]` |
 
+## Ubuntu-20
+
+| Variable | Default |
+|----------|---------|
+| `__java_packages` | `["openjdk-11-jdk"]` |
+
 # Dependencies
 
 None
@@ -71,8 +84,17 @@ None
       when: ansible_os_family == 'Debian'
     - role: ansible-role-java
   vars:
-    java_packages: "{% if ansible_os_family == 'FreeBSD' %}[ 'java/openjdk7', 'java/openjdk8-jre' ]{% elif ansible_os_family == 'RedHat' %}[ 'java-1.7.0-openjdk', 'java-1.7.0-openjdk-devel' ]{% elif ansible_os_family == 'OpenBSD' %}[ 'jdk--%1.8' ]{% elif ansible_distribution == 'Ubuntu' and ansible_distribution_version is version_compare('16.04', '<') %}[ 'oracle-java8-installer', 'openjdk-7-jdk' ]{% elif ansible_distribution == 'Ubuntu' and ansible_distribution_version is version_compare('16.04', '>=') %}[ 'openjdk-8-jdk' ]{% elif ansible_distribution == 'Debian' %}[ 'openjdk-8-jdk' ]{% endif %}"
-    apt_repo_to_add: "{% if ansible_distribution == 'Ubuntu' and ansible_distribution_version is version_compare('16.04', '<') %}[ 'ppa:webupd8team/java' ]{% elif ansible_distribution == 'Debian' %}[ 'deb http://ftp.debian.org/debian jessie-backports main' ]{% else %}[]{% endif %}"
+    os_java_packages:
+      FreeBSD:
+        - java/openjdk13
+      RedHat:
+        - java-1.8.0-openjdk
+        - java-1.8.0-openjdk-devel
+      OpenBSD:
+        - jdk--%11
+      Debian:
+        - openjdk-8-jdk
+    java_packages: "{{ os_java_packages[ansible_os_family] }}"
 ```
 
 # License
