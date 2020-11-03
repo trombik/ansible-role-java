@@ -1,3 +1,9 @@
+## Release 2.0.1
+
+* 51fc757 bugfix: QA
+* 1855c9e bugfix: update meta
+* 9a6388d bugfix: update boxes, JDK versions
+
 ## Release 2.0.0
 
 * 55d8380 bugfix: update README
